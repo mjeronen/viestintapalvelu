@@ -23,11 +23,11 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.annotation.Resource;
 import javax.inject.Singleton;
 
-import org.jgroups.util.ConcurrentLinkedBlockingQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -263,13 +263,13 @@ public class LetterBatchProcessor {
     protected class BatchJob<T extends Processable> implements Callable<Boolean> {
         private final int threads;
         private final JobDescription<T> jobDescription;
-        private volatile ConcurrentLinkedBlockingQueue<T> unprocessed;
+        private volatile ConcurrentLinkedQueue<T> unprocessed;
         private volatile AtomicBoolean okState = new AtomicBoolean(true);
 
         public BatchJob(JobDescription<T> jobDescription) {
             this.jobDescription = jobDescription;
             this.threads = Math.max(1, Math.min(jobDescription.getThreads(), jobDescription.getProcessables().size()));
-            this.unprocessed = new ConcurrentLinkedBlockingQueue<>(jobDescription.getProcessables().size());
+            this.unprocessed = new ConcurrentLinkedQueue<>();
             this.unprocessed.addAll(jobDescription.getProcessables());
         }
 

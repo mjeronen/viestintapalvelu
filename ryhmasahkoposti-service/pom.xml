@@ -465,12 +465,6 @@
             </exclusions>
         </dependency>
 
-        <!-- JGroups -->
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-core</artifactId>
-        </dependency>
-
         <!-- Swagger -->
         <dependency>
             <groupId>com.wordnik</groupId>

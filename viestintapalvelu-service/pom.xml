@@ -515,11 +515,6 @@
             </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>org.jgroups</groupId>
-            <artifactId>jgroups</artifactId>
-        </dependency>
-
         <!-- JPA and QSDL -->
         <dependency>
             <groupId>javax.persistence</groupId>

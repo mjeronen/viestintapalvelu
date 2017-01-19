@@ -284,12 +284,6 @@
             </exclusions>
         </dependency>
 
-        <!-- JGroups -->
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-core</artifactId>
-        </dependency>
-
         <!-- Test: -->
 
         <!-- HyperSQL DataBase for testing -->

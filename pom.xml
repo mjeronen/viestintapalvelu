@@ -80,7 +80,6 @@
         <jta.version>1.1</jta.version>
         <jaxen.version>1.1.1</jaxen.version>
         <jersey.version>2.6</jersey.version>
-        <jgroups.version>2.10.0.GA</jgroups.version>
         <joda.version>2.1</joda.version>
         <jretrofit.version>1.1</jretrofit.version>
         <jsch.version>0.1.50</jsch.version>
@@ -577,13 +576,6 @@
                 <groupId>org.jasig.cas</groupId>
                 <artifactId>cas-client-support-distributed-ehcache</artifactId>
                 <version>${cas-client.version}</version>
-            </dependency>
-
-            <!-- JGroups toolkit for cluster messaging -->
-            <dependency>
-                <groupId>org.jgroups</groupId>
-                <artifactId>jgroups</artifactId>
-                <version>${jgroups.version}</version>
             </dependency>
 
             <!-- JPA and QSDL -->
