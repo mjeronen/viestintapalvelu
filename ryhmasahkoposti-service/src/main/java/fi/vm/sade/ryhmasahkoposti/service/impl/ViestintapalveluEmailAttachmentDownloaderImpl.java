@@ -35,7 +35,7 @@ import fi.vm.sade.ryhmasahkoposti.service.EmailAttachmentDownloader;
  */
 @Component
 public class ViestintapalveluEmailAttachmentDownloaderImpl implements EmailAttachmentDownloader {
-    private static Logger logger = LoggerFactory.getLogger(TemplateComponent.class);
+    private static Logger logger = LoggerFactory.getLogger(ViestintapalveluEmailAttachmentDownloaderImpl.class);
 
     private static final String URI_PREFIX = "viestinta://";
 

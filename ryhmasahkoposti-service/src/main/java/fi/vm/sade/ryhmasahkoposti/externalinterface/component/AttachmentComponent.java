@@ -35,7 +35,7 @@ import fi.vm.sade.viestintapalvelu.common.exception.ExternalInterfaceException;
  */
 @Component
 public class AttachmentComponent {
-    private static Logger logger = LoggerFactory.getLogger(TemplateComponent.class);
+    private static Logger logger = LoggerFactory.getLogger(AttachmentComponent.class);
 
     @Resource
     private AttachmentResource attachmentResourceClient;
