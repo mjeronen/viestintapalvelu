@@ -37,14 +37,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @RunWith(JUnit4.class)
-public class TemplateRestClientTest {
-    private final TemplateRestClient templateRestClient = new TemplateRestClient("http://localhost/viestintapalvelu", new ObjectMapperProvider());
+public class ViestintapalveluRestClientTest {
+    private final ViestintapalveluRestClient viestintapalveluRestClient = new ViestintapalveluRestClient("http://localhost/viestintapalvelu", new ObjectMapperProvider());
     private final HttpClient mockHttpClient = Mockito.mock(HttpClient.class);
     private final BasicHttpResponse response = new BasicHttpResponse(new BasicStatusLine(new ProtocolVersion("HTTP", 1, 1), 200, "lol"));
 
     @Before
     public void setupMocks() throws IOException {
-        ReflectionTestUtils.setField(templateRestClient, "cachingClient", mockHttpClient);
+        ReflectionTestUtils.setField(viestintapalveluRestClient, "cachingClient", mockHttpClient);
         response.setEntity(new StringEntity(readFileFromClasspath("test_email_template.json")));
     }
 
@@ -52,7 +52,7 @@ public class TemplateRestClientTest {
     public void templateCanBeParsedFromResponse() throws IOException {
         when(mockHttpClient.execute(any(HttpUriRequest.class), any(HttpContext.class))).thenReturn(response);
 
-        TemplateDTO template = templateRestClient.getTemplateContent("omattiedot", "FI", "email");
+        TemplateDTO template = viestintapalveluRestClient.getTemplateContent("omattiedot", "FI", "email");
 
         assertEquals(new Long(17213), template.getId());
         assertEquals("omattiedot_email", template.getName());
@@ -71,7 +71,7 @@ public class TemplateRestClientTest {
                 return response;
         });
 
-        templateRestClient.getTemplateContent("omattiedot", "FI", "email");
+        viestintapalveluRestClient.getTemplateContent("omattiedot", "FI", "email");
         verify(mockHttpClient, times(1)).execute(any(HttpUriRequest.class), any(HttpContext.class));
     }
     private String readFileFromClasspath(String filenameInMyPackage) throws IOException {

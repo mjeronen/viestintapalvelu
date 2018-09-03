@@ -43,7 +43,9 @@ public class EmailComponent {
     private EmailBuilder emailBuilder;
 
     public boolean sendEmail(EmailData data) {
-        return checkResponse(emailResourceClient.sendEmail(data));
+        LOGGER.warn("Calling external interface EmailResource.sendEmail");
+        Response response = emailResourceClient.sendEmail(data);
+        return checkResponse(response);
     }
 
     public String getPreview(EmailData data) {
@@ -67,7 +69,9 @@ public class EmailComponent {
             LOGGER.error("Could not make email data for letter " + source + " reason " + e.getMessage(), e);
             return false;
         }
-        return checkResponse(emailResourceClient.sendEmail(emailData));
+        LOGGER.warn("Calling external interface EmailResource.sendEmail");
+        Response response = emailResourceClient.sendEmail(emailData);
+        return checkResponse(response);
     }
 
     private boolean checkResponse(Response response) {

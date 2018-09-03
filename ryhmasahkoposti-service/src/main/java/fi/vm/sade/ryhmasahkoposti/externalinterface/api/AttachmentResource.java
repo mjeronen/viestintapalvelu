@@ -16,25 +16,19 @@
 package fi.vm.sade.ryhmasahkoposti.externalinterface.api;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import fi.vm.sade.ryhmasahkoposti.api.dto.EmailAttachment;
+import org.apache.http.HttpResponse;
+
+import java.io.IOException;
 
 /**
  * User: ratamaa Date: 24.9.2014 Time: 15:06
  */
-@Path("/attachment")
 public interface AttachmentResource {
 
-    @GET
-    @Path("/getByUri")
-    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    EmailAttachment downloadByUri(@QueryParam("uri") String uri);
+    EmailAttachment downloadByUri(@QueryParam("uri") String uri) throws IOException;
 
-    @POST
-    @Path("/urisDownloaded")
-    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    Response deleteByUris(UrisContainerDto urisContainerDto);
+    HttpResponse deleteByUris(UrisContainerDto urisContainerDto) throws IOException;
 
 }

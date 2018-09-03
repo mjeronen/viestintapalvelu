@@ -56,19 +56,6 @@
       <property name="clientSubSystemCode" value="viestintapalvelu.ryhmasahkoposti-service.backend"/>
     </bean>
 
-    <!-- External interface AttachmentResource  -->
-    <jaxrs-client:client id="attachmentResourceClient"
-                         serviceClass="fi.vm.sade.ryhmasahkoposti.externalinterface.api.AttachmentResource"
-                         address="${viestintapalvelu.rest.url}" inheritHeaders="true">
-        <jaxrs-client:outInterceptors>
-            <ref bean="ophRequestHeaders"/>
-        </jaxrs-client:outInterceptors>
-        <jaxrs-client:providers>
-            <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
-            <bean class="fi.vm.sade.externalinterface.common.ObjectMapperProvider"/>
-        </jaxrs-client:providers>
-    </jaxrs-client:client>
-
     <!-- Oppijanumerorekisteri -->
     <bean id="oppijanumeroRekisteriRestClient" class="fi.vm.sade.externalinterface.OppijanumeroRekisteriRestClient">
         <constructor-arg  value="${oppijanumerorekisteri-service.base}"/>
@@ -115,7 +102,7 @@
     </jaxrs-client:client>
 
     <!-- External interface LetterResource  -->
-    <bean id="templateRestClient" class="fi.vm.sade.ryhmasahkoposti.externalinterface.client.TemplateRestClient">
+    <bean id="viestintapalveluRestClient" class="fi.vm.sade.ryhmasahkoposti.externalinterface.client.ViestintapalveluRestClient">
         <constructor-arg index="0" value="${viestintapalvelu.base}"/>
         <constructor-arg index="1">
             <bean class="fi.vm.sade.externalinterface.common.ObjectMapperProvider"/>

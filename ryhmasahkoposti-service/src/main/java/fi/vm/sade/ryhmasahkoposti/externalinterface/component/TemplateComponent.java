@@ -37,7 +37,7 @@ public class TemplateComponent {
     private static Logger LOGGER = LoggerFactory.getLogger(TemplateComponent.class);
 
     @Resource
-    private TemplateResource templateResourceClient;
+    private TemplateResource viestintapalveluRestClient;
 
     /**
      * Get template content
@@ -51,9 +51,9 @@ public class TemplateComponent {
         try {
             languageCode = languageCode != null ? languageCode.toUpperCase() : languageCode;
             if (applicationPeriod != null && !applicationPeriod.isEmpty()) {
-                return templateResourceClient.getTemplateContent("" + templateName, "" + languageCode, "" + type, "" + applicationPeriod);
+                return viestintapalveluRestClient.getTemplateContent("" + templateName, "" + languageCode, "" + type, "" + applicationPeriod);
             } else {
-                return templateResourceClient.getTemplateContent("" + templateName, "" + languageCode, "" + type);
+                return viestintapalveluRestClient.getTemplateContent("" + templateName, "" + languageCode, "" + type);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
@@ -63,7 +63,7 @@ public class TemplateComponent {
 
     public TemplateDTO getTemplateContent(String templateId) {
         try {
-            return templateResourceClient.getTemplateByID(templateId, "email");
+            return viestintapalveluRestClient.getTemplateByID(templateId, "email");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             throw new ExternalInterfaceException("error.msg.gettingTemplateDataFailed", e);
@@ -71,6 +71,6 @@ public class TemplateComponent {
     }
 
     public void setTemplateResourceClient(TemplateResource templateResourceClient) {
-        this.templateResourceClient = templateResourceClient;
+        this.viestintapalveluRestClient = templateResourceClient;
     }
 }
