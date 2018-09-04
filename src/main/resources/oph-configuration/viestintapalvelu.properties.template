@@ -137,6 +137,7 @@ ryhmasahkoposti-service.email.rest.url=https://${host.virkailija}/ryhmasahkopost
 tarjonta-service.rest.url=https://${host.virkailija}/tarjonta-service/rest/v1
 viestintapalvelu.base=https://${host.virkailija}/viestintapalvelu
 viestintapalvelu.rest.url=${viestintapalvelu.base}/api/v1
+ryhmasahkoposti.base=https://${host.virkailija}/ryhmasahkoposti-service
 
 ##############################################################################
 #

@@ -174,15 +174,16 @@
             <property name="password" value="${ryhmasahkoposti.app.password.to.viestintapalvelu}" />
         </bean>
 
-
-        <jaxrs-client:client id="emailResourceClient" serviceClass="fi.vm.sade.viestintapalvelu.externalinterface.api.EmailResource" address="${ryhmasahkoposti-service.email.rest.url}" inheritHeaders="true">
-            <jaxrs-client:outInterceptors>
-                <ref bean="ophRequestHeaders"/>
-            </jaxrs-client:outInterceptors>
-            <jaxrs-client:providers>
-                <ref bean="customJsonProvider"/>
-            </jaxrs-client:providers>
-        </jaxrs-client:client>
+        <bean id="ryhmasahkopostiRestClient" class="fi.vm.sade.viestintapalvelu.externalinterface.RyhmasahkopostiRestClient">
+            <constructor-arg index="0" value="${ryhmasahkoposti.base}"/>
+            <constructor-arg index="1">
+                <bean class="fi.vm.sade.externalinterface.common.ObjectMapperProvider"/>
+            </constructor-arg>
+            <property name="webCasUrl" value="${web.url.cas}"/>
+            <property name="casService" value="${ryhmasahkoposti.base}"/>
+            <property name="username" value="${ryhmasahkoposti.app.username.to.viestintapalvelu}" />
+            <property name="password" value="${ryhmasahkoposti.app.password.to.viestintapalvelu}" />
+        </bean>
 
         <jaxrs-client:client id="tarjontaHakuResourceClient"
                         serviceClass="fi.vm.sade.viestintapalvelu.externalinterface.api.TarjontaHakuResource"

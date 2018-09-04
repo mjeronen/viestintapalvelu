@@ -55,7 +55,7 @@
     <mockito:mock id="oppijanumeroRekisteriRestClient" class="fi.vm.sade.externalinterface.OppijanumeroRekisteriRestClient"/>
     <mockito:mock id="organisaatioResourceClient" class="fi.vm.sade.viestintapalvelu.externalinterface.api.OrganisaatioResource"/>
     <mockito:mock id="organisaatioResourceWithoutAuthenticationClient" class="fi.vm.sade.viestintapalvelu.externalinterface.api.OrganisaatioResourceWithoutAuthentication"/>
-    <mockito:mock id="emailResourceClient" class="fi.vm.sade.viestintapalvelu.externalinterface.api.EmailResource"/>
+    <mockito:mock id="ryhmasahkopostiRestClient" class="fi.vm.sade.viestintapalvelu.externalinterface.RyhmasahkopostiRestClient"/>
     <mockito:mock id="tarjontaHakuResourceClient" class="fi.vm.sade.viestintapalvelu.externalinterface.api.TarjontaHakuResource"/>
     <mockito:mock id="asiointitiliViranomaispalvelutClient" class="fi.suomi.asiointitili.Viranomaispalvelut"/>
 
